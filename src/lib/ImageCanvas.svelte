@@ -44,11 +44,23 @@
 
   function drawImage() {
     if (!$canvas || !image) return;
-    const scaleFactor = 800 / image.width;
-    const width = Math.min(800, image.width);
+    let scaleFactor;
+    let width;
+    let height;
+
+    if (image.width > 800) {
+      scaleFactor = 800 / image.width;
+      width = 800;
+      height = image.height * scaleFactor;
+    } else {
+      scaleFactor = 1;
+      width = image.width;
+      height = image.height;
+    }
+
     $canvas.width = width;
-    $canvas.height = image.height * scaleFactor;
-    $ctx?.drawImage(image, 0, 0, $canvas.width, $canvas.height);
+    $canvas.height = height;
+    $ctx?.drawImage(image, 0, 0, width, height);
   }
 
   function compressArea(x: number, y: number, brushSize: number, quality: number) {
