@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		
+		<link href="./_app/immutable/assets/0.oKA5neMc.css" rel="stylesheet">
+		<link href="./_app/immutable/assets/2.4E2P9Wpr.css" rel="stylesheet">
+		<link rel="modulepreload" href="./_app/immutable/entry/start.wKGtDhwu.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/entry.JcFJXBQ1.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/scheduler.jEsUqNkz.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/index.1Vp6x_fP.js">
+		<link rel="modulepreload" href="./_app/immutable/entry/app.60L9KBBp.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/index.XqvLI3xT.js">
+		<link rel="modulepreload" href="./_app/immutable/nodes/0.8yuXmIu-.js">
+		<link rel="modulepreload" href="./_app/immutable/nodes/2.C_zaJd6l.js">
+	</head>
+	<body data-sveltekit-preload-data="hover">
+		<div style="display: contents">  <main class="svelte-1xpnjzx"><h1 class="text-3xl font-bold " data-svelte-h="svelte-hk1zpg">Descaler</h1> <nav class="mb-2 text-sm flex justify-between items-center"><h2 data-svelte-h="svelte-qd8s7g">Drawing with compression.</h2> </nav> <canvas hidden></canvas>  <div id="dropzone" role="button" tabindex="0" class="border-2 border-dashed border-gray-400 hover:border-gray-500 rounded-lg p-4 text-center svelte-y2hrr0"><form><input class="hidden svelte-y2hrr0" type="file" id="file" accept="image/*" title="Upload an image"> <label for="file" class="svelte-y2hrr0" data-svelte-h="svelte-7ddtkq">Select an image</label></form> <p class="mt-0.5 svelte-y2hrr0" data-svelte-h="svelte-1995ugg">Or drop one here</p></div> </main> 
+			
+			<script>
+				{
+					__sveltekit_1m8yn25 = {
+						base: new URL(".", location).pathname.slice(0, -1),
+						assets: "/descaler"
+					};
+
+					const element = document.currentScript.parentElement;
+
+					const data = [null,null];
+
+					Promise.all([
+						import("./_app/immutable/entry/start.wKGtDhwu.js"),
+						import("./_app/immutable/entry/app.60L9KBBp.js")
+					]).then(([kit, app]) => {
+						kit.start(app, element, {
+							node_ids: [0, 2],
+							data,
+							form: null,
+							error: null
+						});
+					});
+				}
+			</script>
+		</div>
+	</body>
+</html>
