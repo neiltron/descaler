@@ -1,8 +1,8 @@
 <script>
   import ImageCanvas from '../lib/ImageCanvas.svelte';
   import { canvas, hasImage } from '$lib/store';
-	import PaintbrushConfig from '$lib/PaintbrushConfig.svelte';
-	import QualityConfig from '$lib/QualityConfig.svelte';
+	import PaintbrushConfig from '$lib/components/PaintbrushConfig.svelte';
+	import QualityConfig from '$lib/components/QualityConfig.svelte';
 	import Button from '$lib/components/ui/button/button.svelte';
   import Cursor from '$lib/components/ui/Cursor.svelte';
 
@@ -88,7 +88,7 @@
   #byline {
     position: fixed;
     bottom: 0;
-    padding: 10px;
+    padding: 10px 10px 15px;
     font-size: 0.8rem;
     text-align: center;
     width: 100%;

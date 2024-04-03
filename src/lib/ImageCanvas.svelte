@@ -43,7 +43,7 @@
 </script>
 
 <canvas 
-  class="mt-6 ml-auto mr-auto"
+  class={`mt-6 ml-auto mr-auto ${$brushSize < 30 ? 'cursor-none' : 'cursor-crosshair'}`}
   bind:this={$canvas} 
   on:mousemove={handleMouseMove} 
   hidden={!$hasImage}
@@ -52,10 +52,3 @@
 {#if !$hasImage}
   <DropZone />
 {/if}
-
-<style lang="postcss">
-
-canvas {
-  cursor: crosshair;
-}
-</style>

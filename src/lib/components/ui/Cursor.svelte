@@ -11,7 +11,8 @@
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     ctx.beginPath();
     ctx.arc(canvas.width / 2, canvas.height / 2, $brushSize / 2, 0, 2 * Math.PI);
-    ctx.strokeStyle = 'black';
+    ctx.strokeStyle = 'white';
+    ctx.lineWidth = 2;
     ctx.stroke();
   }
 
@@ -52,17 +53,23 @@
   };
 </script>
 
-<canvas bind:this={canvas}></canvas>
+<div>
+  <canvas bind:this={canvas}></canvas>
+</div>
 
 <style lang="postcss">
+  div {
+    mix-blend-mode:difference;
+  }
+
   canvas {
     position: absolute;
+    background-color: #000;
     top: 0;
     left: 0;
     width: 200px;
     height: 200px;
     pointer-events: none;
-    mix-blend-mode: multiply;
     z-index: 100;
     opacity: 0;
     transition: opacity 0.15s ease-in-out;
