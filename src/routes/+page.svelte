@@ -49,6 +49,10 @@
 
 <Cursor />
 
+<div id='byline'>
+  Made by <a href='https://descend.org' target='_blank'>Neil Pullman</a>
+</div>
+
 <style lang="postcss">
   :global(html, body) {
     background-color: theme(colors.gray.200);
@@ -79,5 +83,17 @@
   .image-buttons {
     opacity: 1;
     transition: opacity 2s ease-in-out;
+  }
+
+  #byline {
+    position: fixed;
+    bottom: 0;
+    padding: 10px;
+    font-size: 0.8rem;
+    text-align: center;
+    width: 100%;
+  }
+  #byline a {
+    font-weight: 500;
   }
 </style>
