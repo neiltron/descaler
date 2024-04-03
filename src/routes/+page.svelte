@@ -1,22 +1,32 @@
 <script>
   import ImageCanvas from '../lib/ImageCanvas.svelte';
   import { canvas, hasImage } from '$lib/store';
+	import PaintbrushConfig from '$lib/PaintbrushConfig.svelte';
+	import QualityConfig from '$lib/QualityConfig.svelte';
+	import Button from '$lib/components/ui/button/button.svelte';
+
+  import {
+    Card,
+  } from "$lib/components/ui/card";
 </script>
 
 <main>
-  <h1 class="text-3xl font-bold ">Descaler</h1>
-
-  <nav class="mb-2 text-sm flex justify-between items-center">
+  <header class="mb-6">
+    <h1 class="text-3xl font-bold ">Descaler</h1>
     <h2>Drawing with compression.</h2>
-    {#if $hasImage}
-      <div>
-        <button
-          class="btn btn-gray"
-          on:click={() => hasImage.set(false)}
-        >Reset</button>
-        <button
-          class="btn btn-gray"
-          on:click={() => $canvas?.toBlob((blob) => {
+  </header>
+
+  {#if $hasImage}
+  <Card>
+    <nav class="m-2 text-sm flex justify-between items-center">
+      <div class="flex justify-between w-full">
+        <div>
+          <PaintbrushConfig />
+          <QualityConfig />
+        </div>
+        <div>
+          <Button variant="destructive" on:click={() => hasImage.set(false)}>Reset</Button>
+          <Button variant="default" on:click={() => $canvas?.toBlob((blob) => {
             if (!blob) return;
             const url = URL.createObjectURL(blob);
             const a = document.createElement('a');
@@ -24,11 +34,13 @@
             a.download = 'descaler.png';
             a.click();
             URL.revokeObjectURL(url);
-          })}
-        >Save image</button>
+          })}>Save image</Button>
+        </div>
       </div>
-    {/if}
-  </nav>
+    </nav>
+  </Card>
+  {/if}
+  
   <ImageCanvas />
 </main>
 
@@ -44,17 +56,7 @@
     max-width: 800px;
     margin: 0 auto;
     padding: 40px 20px;
-    height: fill-available;
+    height: stretch;
     box-sizing: content-box;
-  }
-
-  .btn {
-    @apply font-bold py-2 px-4 rounded;
-  }
-  .btn-gray {
-    @apply bg-gray-500 text-white;
-  }
-  .btn-gray:hover {
-    @apply bg-gray-600;
   }
 </style>
