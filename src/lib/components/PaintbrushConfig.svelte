@@ -15,9 +15,9 @@
  
 <DropdownMenu.Root class={className}>
   <DropdownMenu.Trigger asChild let:builder>
-    <Button builders={[builder]} variant="outline" class="w-24 justify-between">
+    <Button builders={[builder]} variant="outline" class="w-[80px] justify-between">
       <Brush class='w-5' />
-      <span class="ml-4">{$brushSize}</span>
+      <span class="ml-1">{$brushSize}</span>
     </Button>
   </DropdownMenu.Trigger>
   <DropdownMenu.Content class="w-56" align="start">

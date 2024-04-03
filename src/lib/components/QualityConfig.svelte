@@ -15,7 +15,7 @@
  
 <DropdownMenu.Root>
   <DropdownMenu.Trigger asChild let:builder>
-    <Button builders={[builder]} variant="outline" class="w-24 justify-between">
+    <Button builders={[builder]} variant="outline" class="w-[80px] justify-between">
       <ImageDown class='w-5' />
       <span class="ml-4">{$compressionQuality}</span>
     </Button>
