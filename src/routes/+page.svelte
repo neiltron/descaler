@@ -60,6 +60,8 @@
     padding: 120px 20px;
     height: stretch;
     box-sizing: content-box;
+    display: flex;
+    align-items: center;
   }
 
   header {

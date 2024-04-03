@@ -65,7 +65,7 @@
   }
 </script>
 
-<Card>
+<Card class="w-full">
   <!-- svelte-ignore a11y-click-events-have-key-events -->
   <div
     id="dropzone"
@@ -106,7 +106,7 @@
     align-items: center;
     justify-content: center;
     letter-spacing: -.1px;
-    cursor: pointer;
+    cursor: crosshair;
   }
 
   #dropzone input {
