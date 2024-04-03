@@ -1,21 +1,34 @@
 <script>
   import ImageCanvas from '../lib/ImageCanvas.svelte';
   import { canvas, hasImage } from '$lib/store';
+	import PaintbrushConfig from '$lib/components/PaintbrushConfig.svelte';
+	import QualityConfig from '$lib/components/QualityConfig.svelte';
+	import Button from '$lib/components/ui/button/button.svelte';
+  import Cursor from '$lib/components/ui/Cursor.svelte';
+
+  import {
+    Card,
+  } from "$lib/components/ui/card";
 </script>
 
-<main>
-  <h1 class="text-3xl font-bold ">Descaler</h1>
+<Card class="bg-gray-800 fixed top-0 left-0 w-full">
+  <header class="p-4 align-middle">
+    <h1 class="text-1xl uppercase font-bold text-slate-50">Descaler</h1>
 
-  <nav class="mb-2 text-sm flex justify-between items-center">
-    <h2>Drawing with compression.</h2>
-    {#if $hasImage}
-      <div>
-        <button
-          class="btn btn-gray"
+    <div>
+      <PaintbrushConfig className="bg-gray-200" />
+      <QualityConfig className="bg-gray-200" />
+    </div>
+
+    <div>
+        <Button
+          variant="destructive"
+          class={`image-buttons ${!$hasImage ? 'opacity-0' : ''}`}
           on:click={() => hasImage.set(false)}
-        >Reset</button>
-        <button
-          class="btn btn-gray"
+        >Reset</Button>
+        <Button
+          variant="default"
+          class={`image-buttons ${!$hasImage ? 'opacity-0' : ''}`}
           on:click={() => $canvas?.toBlob((blob) => {
             if (!blob) return;
             const url = URL.createObjectURL(blob);
@@ -24,13 +37,21 @@
             a.download = 'descaler.png';
             a.click();
             URL.revokeObjectURL(url);
-          })}
-        >Save image</button>
-      </div>
-    {/if}
-  </nav>
+          }
+        )}>Save image</Button>
+    </div>
+  </header>
+</Card>
+
+<main>
   <ImageCanvas />
 </main>
+
+<Cursor />
+
+<div id='byline'>
+  Made by <a href='https://descend.org' target='_blank'>Neil Pullman</a>
+</div>
 
 <style lang="postcss">
   :global(html, body) {
@@ -43,18 +64,36 @@
   main {
     max-width: 800px;
     margin: 0 auto;
-    padding: 40px 20px;
-    height: fill-available;
+    padding: 80px 20px;
+    min-height: stretch;
     box-sizing: content-box;
+    display: flex;
+    align-items: center;
   }
 
-  .btn {
-    @apply font-bold py-2 px-4 rounded;
+  header {
+    display: flex;
+    justify-content: space-between;
   }
-  .btn-gray {
-    @apply bg-gray-500 text-white;
+  h1 {
+    display: inline-block;
+    align-self: center;
   }
-  .btn-gray:hover {
-    @apply bg-gray-600;
+
+  .image-buttons {
+    opacity: 1;
+    transition: opacity 2s ease-in-out;
+  }
+
+  #byline {
+    position: fixed;
+    bottom: 0;
+    padding: 10px 10px 15px;
+    font-size: 0.8rem;
+    text-align: center;
+    width: 100%;
+  }
+  #byline a {
+    font-weight: 500;
   }
 </style>
