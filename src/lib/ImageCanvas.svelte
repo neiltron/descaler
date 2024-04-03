@@ -54,4 +54,8 @@
 {/if}
 
 <style lang="postcss">
+
+canvas {
+  cursor: crosshair;
+}
 </style>

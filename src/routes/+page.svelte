@@ -4,6 +4,7 @@
 	import PaintbrushConfig from '$lib/PaintbrushConfig.svelte';
 	import QualityConfig from '$lib/QualityConfig.svelte';
 	import Button from '$lib/components/ui/button/button.svelte';
+  import Cursor from '$lib/components/ui/Cursor.svelte';
 
   import {
     Card,
@@ -46,6 +47,8 @@
   <ImageCanvas />
 </main>
 
+<Cursor />
+
 <style lang="postcss">
   :global(html, body) {
     background-color: theme(colors.gray.200);
@@ -57,8 +60,8 @@
   main {
     max-width: 800px;
     margin: 0 auto;
-    padding: 120px 20px;
-    height: stretch;
+    padding: 80px 20px;
+    min-height: stretch;
     box-sizing: content-box;
     display: flex;
     align-items: center;

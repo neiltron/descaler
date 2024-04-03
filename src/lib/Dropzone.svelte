@@ -99,14 +99,14 @@
 <style lang="postcss">
   #dropzone {
     font-family: Avenir, "Helvetica Neue", Lato, "Segoe UI", Helvetica, Arial, sans-serif;
-    height: 500px;
+    height: 300px;
     max-height: 50vh;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     letter-spacing: -.1px;
-    cursor: crosshair;
+    cursor: pointer;
   }
 
   #dropzone input {
