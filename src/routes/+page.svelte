@@ -10,23 +10,25 @@
   } from "$lib/components/ui/card";
 </script>
 
-<main>
-  <header class="mb-6">
-    <h1 class="text-3xl font-bold ">Descaler</h1>
-    <h2>Drawing with compression.</h2>
-  </header>
+<Card class="bg-gray-800 fixed top-0 left-0 w-full">
+  <header class="p-4 align-middle">
+    <h1 class="text-1xl uppercase font-bold text-slate-50">Descaler</h1>
 
-  {#if $hasImage}
-  <Card>
-    <nav class="m-2 text-sm flex justify-between items-center">
-      <div class="flex justify-between w-full">
-        <div>
-          <PaintbrushConfig />
-          <QualityConfig />
-        </div>
-        <div>
-          <Button variant="destructive" on:click={() => hasImage.set(false)}>Reset</Button>
-          <Button variant="default" on:click={() => $canvas?.toBlob((blob) => {
+    <div>
+      <PaintbrushConfig className="bg-gray-200" />
+      <QualityConfig className="bg-gray-200" />
+    </div>
+
+    <div>
+        <Button
+          variant="destructive"
+          class={`image-buttons ${!$hasImage ? 'opacity-0' : ''}`}
+          on:click={() => hasImage.set(false)}
+        >Reset</Button>
+        <Button
+          variant="default"
+          class={`image-buttons ${!$hasImage ? 'opacity-0' : ''}`}
+          on:click={() => $canvas?.toBlob((blob) => {
             if (!blob) return;
             const url = URL.createObjectURL(blob);
             const a = document.createElement('a');
@@ -34,13 +36,13 @@
             a.download = 'descaler.png';
             a.click();
             URL.revokeObjectURL(url);
-          })}>Save image</Button>
-        </div>
-      </div>
-    </nav>
-  </Card>
-  {/if}
-  
+          }
+        )}>Save image</Button>
+    </div>
+  </header>
+</Card>
+
+<main>
   <ImageCanvas />
 </main>
 
@@ -55,8 +57,22 @@
   main {
     max-width: 800px;
     margin: 0 auto;
-    padding: 40px 20px;
+    padding: 120px 20px;
     height: stretch;
     box-sizing: content-box;
+  }
+
+  header {
+    display: flex;
+    justify-content: space-between;
+  }
+  h1 {
+    display: inline-block;
+    align-self: center;
+  }
+
+  .image-buttons {
+    opacity: 1;
+    transition: opacity 2s ease-in-out;
   }
 </style>

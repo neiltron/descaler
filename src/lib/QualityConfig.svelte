@@ -6,6 +6,8 @@
   
   import { compressionQuality } from "$lib/store";
 
+  export let className: string = '';
+
   const onValueChange = (value: number[]) => {
     compressionQuality.set(value[0]);
   };

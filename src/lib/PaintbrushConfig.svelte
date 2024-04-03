@@ -6,12 +6,14 @@
   
   import { brushSize } from "$lib/store";
 
+  export let className: string;
+
   const onValueChange = (value: number[]) => {
     brushSize.set(value[0]);
   };
 </script>
  
-<DropdownMenu.Root>
+<DropdownMenu.Root class={className}>
   <DropdownMenu.Trigger asChild let:builder>
     <Button builders={[builder]} variant="outline" class="w-24 justify-between">
       <Brush class='w-5' />
