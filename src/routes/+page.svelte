@@ -11,8 +11,8 @@
   } from "$lib/components/ui/card";
 </script>
 
-<Card class="bg-gray-800 fixed top-0 left-0 w-full">
-  <header class="p-4 align-middle">
+<Card class="bg-gray-800 fixed top-[-5px] left-0 w-full">
+  <header class="pl-4 pr-4 pb-4 pt-5 align-middle">
     <h1 class="text-1xl uppercase font-bold text-slate-50">Descaler</h1>
 
     <div>

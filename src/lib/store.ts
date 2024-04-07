@@ -7,3 +7,4 @@ export const canvas = writable<HTMLCanvasElement | null>(null);
 export const ctx = writable<CanvasRenderingContext2D | null | undefined>(null);
 export const brushSize = writable<number>(100); // pixel size, e.g. 1 - 100
 export const compressionQuality = writable<number>(0); // 0.000001 - 1
+export const cursorHidden = writable<boolean>(true);

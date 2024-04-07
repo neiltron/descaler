@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { Slider as SliderPrimitive } from "bits-ui";
 	import { cn } from "$lib/utils.js";
+	import { cursorHidden } from "$lib/store";
 
 	type $$Props = SliderPrimitive.Props;
 
@@ -15,6 +16,7 @@
 	{...$$restProps}
 	let:thumbs
 >
+	<!-- svelte-ignore a11y-no-static-element-interactions -->
 	<span class="relative h-2 w-full grow overflow-hidden rounded-full bg-gray-200">
 		<SliderPrimitive.Range class="absolute h-full bg-primary" />
 	</span>

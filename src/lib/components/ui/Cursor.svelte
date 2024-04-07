@@ -1,11 +1,10 @@
 <script lang="ts">
 	import { onMount } from "svelte";
   import { browser } from '$app/environment';
-  import { brushSize, canvas as mainCanvas, hasImage } from '$lib/store';
+  import { brushSize, canvas as mainCanvas, cursorHidden } from '$lib/store';
 
   let canvas: HTMLCanvasElement | null = null;
   let ctx: CanvasRenderingContext2D | null = null;
-  let cursorHidden: boolean = true;
   
   $: if (ctx && canvas) {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -16,12 +15,12 @@
     ctx.stroke();
   }
 
-  $: if (cursorHidden) {
-    canvas?.style.setProperty('opacity', '0');
-  } else if (browser) {
-    requestAnimationFrame(() => {
+  $: if (browser) {
+    if ($cursorHidden === true) {
+      canvas?.style.setProperty('opacity', '0');
+    } else {
       canvas?.style.setProperty('opacity', '1');
-    });
+    }
   }
 
   $: if (browser && canvas !== null) {
@@ -45,11 +44,16 @@
     const x = event.pageX - rect.width / 2;
     const y = event.pageY - rect.height / 2;
 
+    const brushSizeSlider = document.querySelector('.brush-size-slider');
+
     // transform x and y with css
     canvas.style.setProperty('--x', `${Math.floor(x)}px`);
     canvas.style.setProperty('--y', `${Math.floor(y)}px`);
 
-    cursorHidden = event.target !== $mainCanvas;
+    const brushSizeRect = brushSizeSlider?.getBoundingClientRect();
+    const mouseIsInBrushSizeSlider = brushSizeRect && event.clientX >= brushSizeRect.left && event.clientX <= brushSizeRect.right && event.clientY >= brushSizeRect.top && event.clientY <= brushSizeRect.bottom;
+
+    $cursorHidden = event.target !== $mainCanvas && !mouseIsInBrushSizeSlider;
   };
 </script>
 
@@ -60,6 +64,10 @@
 <style lang="postcss">
   div {
     mix-blend-mode:difference;
+    z-index: 1000;
+    position: absolute;
+    top: 0;
+    left: 0;
   }
 
   canvas {

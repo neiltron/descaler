@@ -3,7 +3,6 @@
   import { Slider } from "$lib/components/ui/slider/index.js";
   import { Button } from "$lib/components/ui/button/index.js";
   import * as DropdownMenu from "$lib/components/ui/dropdown-menu/index.js";
-  
   import { brushSize } from "$lib/store";
 
   export let className: string;
@@ -25,7 +24,13 @@
       <span>Brush Size</span>
     </DropdownMenu.Label>
     <DropdownMenu.Label class="flex justify-between gap-2">
-      <Slider value={[$brushSize]} max={200} step={2} class="w-full" onValueChange={onValueChange} />
+      <Slider
+        value={[$brushSize]}
+        max={200}
+        step={2}
+        class="w-full brush-size-slider"
+        onValueChange={onValueChange}
+      />
     </DropdownMenu.Label>
   </DropdownMenu.Content>
 </DropdownMenu.Root>
