@@ -101,8 +101,6 @@
   }
 
   #byline {
-    position: fixed;
-    bottom: 0;
     padding: 10px 10px 15px;
     font-size: 0.8rem;
     text-align: center;
