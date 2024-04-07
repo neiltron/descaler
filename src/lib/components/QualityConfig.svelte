@@ -22,7 +22,7 @@
   </DropdownMenu.Trigger>
   <DropdownMenu.Content class="w-56" align="start">
     <DropdownMenu.Label class="flex justify-between gap-2">
-      <span>Quality</span>
+      <span>JPEG Quality</span>
     </DropdownMenu.Label>
     <DropdownMenu.Label class="flex justify-between gap-2">
       <Slider value={[$compressionQuality]} max={1} step={.01} class="w-full" onValueChange={onValueChange} />
