@@ -15,12 +15,12 @@
   <header class="pl-4 pr-4 pb-4 pt-5 align-middle">
     <h1 class="text-1xl uppercase font-bold text-slate-50">Descaler</h1>
 
-    <div>
+    <div class='config__items'>
       <PaintbrushConfig className="bg-gray-200" />
       <QualityConfig className="bg-gray-200" />
     </div>
 
-    <div>
+    <div class='action__items'>
         <Button
           variant="destructive"
           class={`image-buttons ${!$hasImage ? 'opacity-0' : ''}`}
@@ -78,6 +78,21 @@
   h1 {
     display: inline-block;
     align-self: center;
+  }
+
+  header h1, header > div {
+    width: 30%;
+    display: flex;
+  }
+
+  .config__items {
+    justify-content: center;
+    gap: 8px;
+  }
+
+  .action__items {
+    justify-content: flex-end;
+    gap: 8px;
   }
 
   .image-buttons {
