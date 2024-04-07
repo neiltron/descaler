@@ -45,15 +45,16 @@
     const y = event.pageY - rect.height / 2;
 
     const brushSizeSlider = document.querySelector('.brush-size-slider');
-
-    // transform x and y with css
-    canvas.style.setProperty('--x', `${Math.floor(x)}px`);
-    canvas.style.setProperty('--y', `${Math.floor(y)}px`);
-
     const brushSizeRect = brushSizeSlider?.getBoundingClientRect();
     const mouseIsInBrushSizeSlider = brushSizeRect && event.clientX >= brushSizeRect.left && event.clientX <= brushSizeRect.right && event.clientY >= brushSizeRect.top && event.clientY <= brushSizeRect.bottom;
 
     $cursorHidden = event.target !== $mainCanvas && !mouseIsInBrushSizeSlider;
+
+    if (!$cursorHidden) {
+      // transform x and y with css
+      canvas.style.setProperty('--x', `${Math.floor(x)}px`);
+      canvas.style.setProperty('--y', `${Math.floor(y)}px`);
+    }
   };
 </script>
 
