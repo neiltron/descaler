@@ -17,7 +17,7 @@
   <DropdownMenu.Trigger asChild let:builder>
     <Button builders={[builder]} variant="outline" class="w-[80px] justify-between">
       <ImageDown class='w-5' />
-      <span class="ml-4">{$compressionQuality}</span>
+      <span class="ml-1">{$compressionQuality}</span>
     </Button>
   </DropdownMenu.Trigger>
   <DropdownMenu.Content class="w-56" align="start">
@@ -25,7 +25,7 @@
       <span>Quality</span>
     </DropdownMenu.Label>
     <DropdownMenu.Label class="flex justify-between gap-2">
-      <Slider value={[$compressionQuality]} max={10} step={.1} class="w-full" onValueChange={onValueChange} />
+      <Slider value={[$compressionQuality]} max={2} step={.01} class="w-full" onValueChange={onValueChange} />
     </DropdownMenu.Label>
   </DropdownMenu.Content>
 </DropdownMenu.Root>
