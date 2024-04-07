@@ -65,7 +65,7 @@
   }
 </script>
 
-<Card class="w-full">
+<Card class="w-full mt-10 mb-4">
   <!-- svelte-ignore a11y-click-events-have-key-events -->
   <div
     id="dropzone"

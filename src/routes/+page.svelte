@@ -56,9 +56,13 @@
 <style lang="postcss">
   :global(html, body) {
     background-color: theme(colors.gray.200);
-    height: 100%;
+    min-height: stretch;
     margin: 0;
     padding: 0;
+  }
+
+  :global(body) {
+    position: relative;
   }
 
   main {
@@ -69,11 +73,15 @@
     box-sizing: content-box;
     display: flex;
     align-items: center;
+    flex-direction: column;
+    z-index: 0
   }
 
   header {
     display: flex;
     justify-content: space-between;
+    position: relative;
+    z-index: 1000;
   }
   h1 {
     display: inline-block;
@@ -101,7 +109,9 @@
   }
 
   #byline {
-    padding: 10px 10px 15px;
+    position: absolute;
+    bottom: 0;
+    padding: 50px 10px 15px;
     font-size: 0.8rem;
     text-align: center;
     width: 100%;
